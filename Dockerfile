@@ -1,12 +1,12 @@
 # Inheritance from bioconductor docker
 FROM bioconductor/bioconductor_docker:latest
 
-LABEL name="bioconductor/bioconductor_docker_basics" \
+LABEL name="bocker" \
       version="0.0.1" \
-      url="https://github.com/VallejosGroup/bioconductor_docker_basics" \
-      maintainer="catalina.vallejos@igmm.ed.ac.uk" \
-      description="Docker containing all requirements to run BASiCS Workflow" \
-      license="Artistic-2.0"
+      url="https://github.com/Alanocallaghan/bocker" \
+      maintainer="alan.ocallaghan@outlook.com" \
+      description="Docker image containing BASiCS and related packages" \
+      license="GPL-3"
       
 # Update apt-get
 # Follows Bioc suggestion, required to compile Rmarkdown into pdf
