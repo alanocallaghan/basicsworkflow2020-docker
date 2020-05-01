@@ -1,5 +1,5 @@
 # Inheritance from bioconductor docker
-FROM bioconductor/bioconductor_docker:latest
+FROM bioconductor/bioconductor_docker:devel
 
 LABEL name="bocker" \
       version="0.0.1" \
