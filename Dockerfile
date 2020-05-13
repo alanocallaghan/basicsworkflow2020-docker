@@ -34,7 +34,6 @@ RUN Rscript -e 'install.packages(c( \
   "ggplot2", \
   "ggpointdensity", \
   "pheatmap", \
-  "ComplexHeatmap", \
   "rmarkdown", \
   "RSQLite", \
   "reshape2", \
@@ -54,6 +53,7 @@ RUN Rscript -e 'BiocManager::install(c( \
   "goseq", \
   "org.Mm.eg.db", \
   "scran", \
+  "ComplexHeatmap", \
   "scater", \
   "SingleCellExperiment", \
   "BiocWorkflowTools"), Ncpus = 4)'
