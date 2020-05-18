@@ -38,6 +38,7 @@ RUN Rscript -e 'install.packages(c( \
   "RSQLite", \
   "reshape2", \
   "hexbin", \
+  "pander", \
   "survival"), Ncpus = 4)'
 
 RUN Rscript -e 'devtools::install_github("tidyverse/dbplyr", ref="f3529c3f4dc69c862384baf2d7bc387a5b89b83b")'
