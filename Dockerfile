@@ -41,7 +41,6 @@ RUN Rscript -e 'BiocManager::install(c( \
   "AnnotationDbi", \
   "BASiCS", \
   "BiocStyle", \
-  "BiocWorkflowTools", \
   "biomaRt", \
   "EnsDb.Mmusculus.v79", \
   "GenomicFeatures", \
