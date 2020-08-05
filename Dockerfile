@@ -7,7 +7,7 @@ LABEL name="bocker" \
       maintainer="alan.ocallaghan@outlook.com" \
       description="Docker image containing BASiCS and related packages" \
       license="GPL-3"
-      
+
 # Update apt-get
 # Follows Bioc suggestion, required to compile Rmarkdown into pdf
 RUN apt-get update \
