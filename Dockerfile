@@ -36,6 +36,7 @@ RUN Rscript -e 'install.packages(c( \
   "RSQLite", \
   "reshape2", \
   "magick", \
+  "patchwork", \
   "hexbin"), Ncpus = 4)'
 
 RUN Rscript -e 'BiocManager::install(c( \
