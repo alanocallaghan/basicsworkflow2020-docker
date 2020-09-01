@@ -1,4 +1,3 @@
-# Inheritance from bioconductor docker
 FROM bioconductor/bioconductor_docker:RELEASE_3_11
 
 LABEL name="bocker" \
@@ -8,50 +7,50 @@ LABEL name="bocker" \
       description="Docker image containing BASiCS and related packages" \
       license="GPL-3"
 
-# Update apt-get
-# Follows Bioc suggestion, required to compile Rmarkdown into pdf
-RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
-    apt-utils \
-	texlive \
-	texlive-latex-extra \
-	texlive-fonts-extra \
-	texlive-bibtex-extra \
-	texlive-science \
-	texi2html \
-	texinfo \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+RUN apt-get update
 
-# Trying to fix rmarkdown issue	
+RUN apt-get install -y --no-install-recommends \
+    apt-utils \
+    libssh2-1-dev \
+    texlive \
+    texlive-latex-extra \
+    texlive-fonts-extra \
+    texlive-bibtex-extra \
+    texlive-science \
+    texi2html \
+    texinfo \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Trying to fix rmarkdown issue	(maybe not necessary)
 RUN touch /home/rstudio/.Rprofile
 
 RUN Rscript -e 'install.packages(c( \
-  "bit64", \
-  "coda", \
-  "knitr", \
-  "ggplot2", \
-  "ggpointdensity", \
-  "rmarkdown", \
-  "RSQLite", \
-  "reshape2", \
-  "magick", \
-  "patchwork", \
-  "hexbin"), Ncpus = 4)'
+    "bit64", \
+    "coda", \
+    "knitr", \
+    "ggplot2", \
+    "ggpointdensity", \
+    "rmarkdown", \
+    "RSQLite", \
+    "reshape2", \
+    "magick", \
+    "patchwork", \
+    "hexbin"), Ncpus = 4)'
 
 RUN Rscript -e 'BiocManager::install(c( \
-  "AnnotationDbi", \
-  "BASiCS", \
-  "BiocStyle", \
-  "biomaRt", \
-  "EnsDb.Mmusculus.v79", \
-  "GenomicFeatures", \
-  "goseq", \
-  "org.Mm.eg.db", \
-  "scran", \
-  "ComplexHeatmap", \
-  "scater", \
-  "SingleCellExperiment", \
-  "BiocWorkflowTools"), Ncpus = 4)'
+    "AnnotationDbi", \
+    "BASiCS", \
+    "BiocStyle", \
+    "biomaRt", \
+    "EnsDb.Mmusculus.v79", \
+    "GenomicFeatures", \
+    "goseq", \
+    "org.Mm.eg.db", \
+    "scran", \
+    "ComplexHeatmap", \
+    "scater", \
+    "SingleCellExperiment", \
+    "BiocWorkflowTools"), Ncpus = 4)'
 
 RUN Rscript -e 'devtools::install_github("catavallejos/BASiCS")'
