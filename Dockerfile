@@ -36,6 +36,7 @@ RUN Rscript -e 'install.packages(c( \
     "reshape2", \
     "magick", \
     "patchwork", \
+    "tidyr", \
     "hexbin"), Ncpus = 4)'
 
 RUN Rscript -e 'BiocManager::install(c( \
@@ -53,4 +54,6 @@ RUN Rscript -e 'BiocManager::install(c( \
     "SingleCellExperiment", \
     "BiocWorkflowTools"), Ncpus = 4)'
 
-RUN Rscript -e 'devtools::install_github("catavallejos/BASiCS")'
+RUN echo nothing
+
+RUN Rscript -e 'devtools::install_github("catavallejos/BASiCS", ref = "master")'
