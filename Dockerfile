@@ -54,6 +54,4 @@ RUN Rscript -e 'BiocManager::install(c( \
     "SingleCellExperiment", \
     "BiocWorkflowTools"), Ncpus = 4)'
 
-RUN echo nothing
-
 RUN Rscript -e 'devtools::install_github("catavallejos/BASiCS", ref = "master")'
