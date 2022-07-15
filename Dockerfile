@@ -1,7 +1,7 @@
-FROM bioconductor/bioconductor_docker:RELEASE_3_13
+FROM bioconductor/bioconductor_docker:RELEASE_3_15
 
 LABEL name="bocker" \
-      version="0.2.0" \
+      version="0.3.0" \
       url="https://github.com/Alanocallaghan/bocker" \
       maintainer="alan.ocallaghan@outlook.com" \
       description="Docker image containing BASiCS and related packages" \
