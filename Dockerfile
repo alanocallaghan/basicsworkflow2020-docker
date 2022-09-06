@@ -1,7 +1,7 @@
-FROM bioconductor/bioconductor_docker:RELEASE_3_15
+FROM bioconductor/bioconductor_docker:devel
 
 LABEL name="bocker" \
-      version="0.3.0" \
+      version="0.3.1" \
       url="https://github.com/Alanocallaghan/bocker" \
       maintainer="alan.ocallaghan@outlook.com" \
       description="Docker image containing BASiCS and related packages" \
@@ -23,7 +23,7 @@ RUN apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Trying to fix rmarkdown issue	(maybe not necessary)
-RUN touch /home/rstudio/.Rprofile
+# RUN touch /home/rstudio/.Rprofile
 
 RUN Rscript -e 'install.packages(c( \
     "bit64", \
@@ -53,3 +53,5 @@ RUN Rscript -e 'BiocManager::install(c( \
     "scater", \
     "SingleCellExperiment", \
     "BiocWorkflowTools"), Ncpus = 4)'
+
+RUN Rscript -e 'BiocManager::install("catavallejos/BASiCS")'
