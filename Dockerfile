@@ -26,6 +26,7 @@ RUN apt-get install -y --no-install-recommends \
 # RUN touch /home/rstudio/.Rprofile
 
 RUN Rscript -e 'install.packages(c( \
+    "readxl", \
     "bit64", \
     "coda", \
     "knitr", \
