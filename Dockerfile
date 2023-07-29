@@ -1,7 +1,7 @@
-FROM bioconductor/bioconductor_docker:devel
+FROM bioconductor/bioconductor_docker:RELEASE_3_17
 
-LABEL name="bocker" \
-      version="0.3.1" \
+LABEL name="basicsworkflow2020-docker" \
+      version="0.4.0" \
       url="https://github.com/Alanocallaghan/bocker" \
       maintainer="alan.ocallaghan@outlook.com" \
       description="Docker image containing BASiCS and related packages" \
@@ -22,10 +22,7 @@ RUN apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Trying to fix rmarkdown issue	(maybe not necessary)
-# RUN touch /home/rstudio/.Rprofile
-
-RUN Rscript -e 'install.packages(c( \
+RUN Rscript -e 'BiocManager::install(c( \
     "readxl", \
     "bit64", \
     "coda", \
@@ -38,21 +35,17 @@ RUN Rscript -e 'install.packages(c( \
     "magick", \
     "patchwork", \
     "tidyr", \
-    "hexbin"), Ncpus = 4)'
-
-RUN Rscript -e 'BiocManager::install(c( \
+    "hexbin", \
     "AnnotationDbi", \
     "BASiCS", \
     "BiocStyle", \
     "biomaRt", \
     "EnsDb.Mmusculus.v79", \
     "GenomicFeatures", \
-    "goseq", \
     "org.Mm.eg.db", \
     "scran", \
     "ComplexHeatmap", \
     "scater", \
+    "scRNAseq", \
     "SingleCellExperiment", \
     "BiocWorkflowTools"), Ncpus = 4)'
-
-RUN Rscript -e 'BiocManager::install("catavallejos/BASiCS")'
