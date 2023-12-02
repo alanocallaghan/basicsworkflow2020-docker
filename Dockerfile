@@ -1,18 +1,20 @@
-FROM bioconductor/bioconductor_docker:RELEASE_3_17
+FROM bioconductor/bioconductor_docker:RELEASE_3_18
 
 LABEL name="basicsworkflow2020-docker" \
-      version="0.4.0" \
+      version="0.5.3" \
       url="https://github.com/Alanocallaghan/bocker" \
       maintainer="alan.ocallaghan@outlook.com" \
       description="Docker image containing BASiCS and related packages" \
       license="GPL-3"
 
-RUN apt-get update
-
-RUN apt-get install -y --no-install-recommends \
+RUN apt update && \
+    apt install -y \
     apt-utils \
     libssh2-1-dev \
     texlive \
+    texlive-latex-base \
+    texlive-latex-recommended \
+    texlive-fonts-recommended \
     texlive-latex-extra \
     texlive-fonts-extra \
     texlive-bibtex-extra \
@@ -49,3 +51,6 @@ RUN Rscript -e 'BiocManager::install(c( \
     "scRNAseq", \
     "SingleCellExperiment", \
     "BiocWorkflowTools"), Ncpus = 4)'
+
+# pepew https://github.com/bwlewis/irlba/issues/70
+RUN Rscript -e 'devtools::install_github("bwlewis/irlba")'

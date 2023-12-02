@@ -1,2 +1,2 @@
 all:
-	docker build -t alanocallaghan/basicsworkflow2020-docker:latest .
+	docker build  --no-cache -t alanocallaghan/basicsworkflow2020-docker:latest .
